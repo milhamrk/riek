@@ -1,16 +1,22 @@
 import React from 'react';
-import './Product.css';
+// import './Product.css';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 class Product extends React.Component {
   render() {
     return (
-        <div className="grid">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Ploduk {this.props.ploduk}</h2>
-            <h2>Harga {this.props.harga}</h2>
-            <button>Tambah Kekeranjang</button>
+        <div className="col m4">
+          <div className="card blue-grey darken-1">
+            <div className="card-image">
+              <img src={logo} />
+              <span className="card-title">{this.props.ploduk}</span>
+              <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">delete</i></a>  
+            </div>
+            <div className="card-content white">
+              <p>{this.props.harga}</p>
+            </div>
+          </div>
         </div>
     );
   }
