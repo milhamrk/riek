@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // import logo from './logo.svg';
 // import './App.css';
 // import Product from './Product';
@@ -11,13 +12,16 @@ class App extends Component {
  constructor(){
         super();
         this.state = {
-            food : [
-                {judul : 'Sate Bebek',keterangan : 'Lorem ipsum sit dolor amet 1'},
-                {judul : 'Sate Ayam',keterangan : 'Lorem ipsum sit dolor amet 1'},
-                {judul : 'Sate Sapi',keterangan : 'Lorem ipsum sit dolor amet 1'},
-                {judul : 'Sate Kambing',keterangan : 'Lorem ipsum sit dolor amet 1'},
-            ]
-        }
+            food : []
+        };
+    }
+
+    componentDidMount(){
+      axios.get(`https://my-json-server.typicode.com/milhamrk/dummy/data`)
+        .then(res => {
+          const food = res.data;
+          this.setState({ food });
+        })
     }
 
   render() {
@@ -29,7 +33,7 @@ class App extends Component {
       		<div className="row">
 	      		{this.state.food.map((data) => {
 	      			return(
-	      				<FoodCard judul={data.judul} keterangan={data.keterangan} />
+	      				<FoodCard judul={data.product} keterangan={data.exp} />
 	      				)
 	      		 })}
       		</div>
